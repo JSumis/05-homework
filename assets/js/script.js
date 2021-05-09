@@ -2,9 +2,7 @@
 var now = moment().format("ddd MMM Do, YYYY");
 $("#currentDay").text(now);
 
-
-
-
+var currentTime = moment().format("HH");
 
 function getEventText(buttonNumber) {
 
@@ -60,12 +58,21 @@ $(function() {
         var eventReturn = 'Event #textBox' + i;
         //Set variable for each of the HTML IDs that will be iterated through
         var savedTxtSelector = '#textBox' + i;
+
         //Set variable for each localStorage item as they are iterated through
         var setEventText = localStorage.getItem(eventReturn);
         //Set the text of the HTML element to the correlating value from localStorage
         $(savedTxtSelector).text(setEventText);
-    };
-})
+        if (i < currentTime) {
+            $(savedTxtSelector).addClass("past");
+        } else if (i === currentTime) {
+            $(savedTxtSelector).addClass("present");
+        } else {
+            $(savedTxtSelector).addClass("future");
+        }
+
+    }
+});
 
 
 /* Psuedo-code
