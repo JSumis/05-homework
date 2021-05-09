@@ -6,20 +6,49 @@ $("#currentDay").text(now);
 
 
 
-function getEventText() {
+function getEventText(buttonNumber) {
 
-    for (var i = 8; i < 18; i++) {
-        var textBoxID = '#textBox' + i;
-        console.log(textBoxID)
-        var textCont = document.querySelector('' + textBoxID + '').value;
-        console.log(textCont)
-
+    var textBoxID = '#textBox' + buttonNumber;
+    console.log(textBoxID)
+    var textCont = document.querySelector('' + textBoxID + '').value;
+    console.log(textCont)
 
 
-        // LocalStorage item named with the corresponding html ID 
-        localStorage.setItem('Event ' + textBoxID, '' + textCont + '');
-    }
+
+    // LocalStorage item named with the corresponding html ID 
+    localStorage.setItem('Event ' + textBoxID, '' + textCont + '');
 };
+
+$('#saveBtn8').on('click', function() {
+    getEventText(8)
+});
+$('#saveBtn9').on('click', function() {
+    getEventText(9)
+});
+$('#saveBtn10').on('click', function() {
+    getEventText(10)
+});
+$('#saveBtn11').on('click', function() {
+    getEventText(11)
+});
+$('#saveBtn12').on('click', function() {
+    getEventText(12)
+});
+$('#saveBtn13').on('click', function() {
+    getEventText(13)
+});
+$('#saveBtn14').on('click', function() {
+    getEventText(14)
+});
+$('#saveBtn15').on('click', function() {
+    getEventText(15)
+});
+$('#saveBtn16').on('click', function() {
+    getEventText(16)
+});
+$('#saveBtn17').on('click', function() {
+    getEventText(17)
+});
 
 
 $('.saveBtn').on('click', getEventText);
@@ -37,31 +66,6 @@ $(function() {
         $(savedTxtSelector).text(setEventText);
     };
 })
-
-/*
-var saveButton = $(".saveBtn").on('click', function() {
-    for (i = 8; i < 18; i++) {
-        var localStorageLabel = 'Textbox' + i
-            // save8amText.preventDefault();
-        var textBox = $(this).prev().children("textarea").val();
-        console.log(textBox)
-            // console.log($(this).prev().children("#textBox" + i).val())
-        localStorage.setItem(localStorageLabel, textBox);
-    };
-})
-
-$(function() {
-    for (var i = 8; i < 18; i++) {
-        var timeText = localStorage.getItem("textBox" + i);
-        var savedTxtSelector = '#textBox' + i;
-        console.log(savedTxtSelector.text, 'is the savedTxt')
-        $(savedTxtSelector).text(timeText);
-
-    }
-}); *
-/
-
-
 
 
 /* Psuedo-code
