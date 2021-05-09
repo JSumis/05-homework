@@ -2,14 +2,66 @@
 var now = moment().format("ddd MMM Do, YYYY");
 $("#currentDay").text(now);
 
-var saveButton = document.getElementById("save8am");
-saveButton.addEventListener("click", function (save8amText) {
-    save8amText.preventDefault();
-    var textBox8am = document.getElementById("textBox8am");
-    localStorage.setItem("8amContents", textBox8am.value);
-}
-)
-localStorage.getItem
+
+
+
+
+function getEventText() {
+
+    for (var i = 8; i < 18; i++) {
+        var textBoxID = '#textBox' + i;
+        console.log(textBoxID)
+        var textCont = document.querySelector('' + textBoxID + '').value;
+        console.log(textCont)
+
+
+
+        // LocalStorage item named with the corresponding html ID 
+        localStorage.setItem('Event ' + textBoxID, '' + textCont + '');
+    }
+};
+
+
+$('.saveBtn').on('click', getEventText);
+// Return Events from localStorage
+$(function() {
+    //Iterate through all possible events
+    for (var i = 8; i < 18; i++) {
+        //identify the item for each event note
+        var eventReturn = 'Event #textBox' + i;
+        //Set variable for each of the HTML IDs that will be iterated through
+        var savedTxtSelector = '#textBox' + i;
+        //Set variable for each localStorage item as they are iterated through
+        var setEventText = localStorage.getItem(eventReturn);
+        //Set the text of the HTML element to the correlating value from localStorage
+        $(savedTxtSelector).text(setEventText);
+    };
+})
+
+/*
+var saveButton = $(".saveBtn").on('click', function() {
+    for (i = 8; i < 18; i++) {
+        var localStorageLabel = 'Textbox' + i
+            // save8amText.preventDefault();
+        var textBox = $(this).prev().children("textarea").val();
+        console.log(textBox)
+            // console.log($(this).prev().children("#textBox" + i).val())
+        localStorage.setItem(localStorageLabel, textBox);
+    };
+})
+
+$(function() {
+    for (var i = 8; i < 18; i++) {
+        var timeText = localStorage.getItem("textBox" + i);
+        var savedTxtSelector = '#textBox' + i;
+        console.log(savedTxtSelector.text, 'is the savedTxt')
+        $(savedTxtSelector).text(timeText);
+
+    }
+}); *
+/
+
+
 
 
 /* Psuedo-code
